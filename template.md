@@ -16,7 +16,7 @@ toc: true # adds an index
 numbersections: true # numbers sections as 1, 1.1, 1.1.1
 
 # bib meta
-bibliography: template.bib # change to your choice
+bibliography: bibliography.bib # change to your choice
 link-citations: true
 ---
 

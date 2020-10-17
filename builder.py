@@ -1,4 +1,4 @@
-#! /bin/python3
+#!/usr/bin/env python3
 
 import sys
 import os.path
@@ -19,10 +19,10 @@ if newext == "new":
 
     print("Creating a new project " + newfile)
     copyfile(rootpath + "/template.md", newfile + ".md")
-    copyfile(rootpath + "/template.bib", newfile + ".bib")
+    copyfile(rootpath + "/bibliography.bib", "bibliography.bib")
 
 else:
-    call_template = "pandoc --variable rootpath=\"{rootpath}\" --filter=pandoc-citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/default.tex\""
+    call_template = "pandoc --variable rootpath=\"{rootpath}\" --citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/default.tex\""
     if newext == "pdf":
         call_template += " -i \"{filename}{ext}\" -o \"{filename}.pdf\""
     elif newext == "latex":
