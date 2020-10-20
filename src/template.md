@@ -1,6 +1,6 @@
 ---
 # seminar metadata
-seminar-title: 
+seminar-title: Seminar Talk
 speaker: # leave empty if not talk
 date: 
 
@@ -26,7 +26,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 There should be whitespace between paragraphs.
 
-There should be whitespace[@name] between paragraphs. Inline math $x=3$.
+There should be whitespace[@testcite] between paragraphs. Inline math $x=3$.
 Display math
 
 $$y=5$$
@@ -88,8 +88,9 @@ Table
 
 ```
 Long, single-line code blocks will not wrap. IT WILL OVERFLOW. This line should be long enough to demonstrate this.
-You can also add the code language like I put python below. It adds syntax coloring too! But it doesn't RUN it. You can also paste ipynb exported as latex
 ```
+
+You can also add the code language like I put python below. It adds syntax coloring too! But it doesn't RUN it. You can also paste ipynb exported as latex
 
 ```python
 def func(x1, x2):
