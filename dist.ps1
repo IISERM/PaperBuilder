@@ -8,8 +8,9 @@ if ($args[0] -notmatch "^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$") {
 }
 
 Remove-Item -r -fo build -ErrorAction Ignore
+Remove-Item -r -fo release -ErrorAction Ignore
 mkdir build >> $null
-mkdir release -ErrorAction Ignore >> $null
+mkdir release >> $null
 
 nuitka --follow-imports "src\PaperBuilder.py" --remove-output --output-dir="build" --standalone >> $null
 
@@ -22,7 +23,7 @@ Copy-Item .\windows\PaperBuilder.bat .\build
 
 $linuxtemplate = Get-Content -Path '.\linux\install.sh'
 $linuxinstall = $linuxtemplate -replace '{version}', $args[0]
-Set-Content -Path ./release/install.sh -Value $linuxinstall
+($linuxinstall -join "`n") | Out-File -Encoding utf8 .\release\PaperBuilder-Setup.sh
 
 7z.exe -tzip a .\release\source-files.zip .\src\
 7z.exe -ttar a .\release\source-files.tar .\src\
