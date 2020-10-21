@@ -1,6 +1,6 @@
 echo "Updating packages"
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 sudo apt autoclean
 
 echo "Installing Pre Requisites..."
@@ -12,7 +12,7 @@ echo "    Downloading..."
 curl -#L https://github.com/jgm/pandoc/releases/download/2.11.0.2/pandoc-2.11.0.2-1-amd64.deb -o ~/.paperbuilder/temp/pandoc.deb
 
 echo "    Installing..."
-sudo apt install ~/.paperbuilder-temp/pandoc.deb
+sudo apt install ~/.paperbuilder/temp/pandoc.deb
 
 echo "  Installing texlive"
 sudo apt install texlive-latex-extra
@@ -28,7 +28,10 @@ echo "  Extracting files..."
 tar -xzf ~/.paperbuilder/temp/source-files.tar.gz -C ~/.paperbuilder
 
 echo "  Adding pprb alias to ~/.bashrc"
-echo "alias pprb=~/.pandoc/PaperBuilder.py" >> ~/.test
+echo "alias pprb=~/.paperbuilder/src/PaperBuilder.py" >> ~/.bashrc
 
 echo "  Deleting temp files"
-rm -r ~/.paperbuilder-temp
+rm -r ~/.paperbuilder/temp
+
+echo "DONE!"
+echo "run `source ~/.bashrc` and then `pprb` to start"
