@@ -34,4 +34,4 @@ echo "  Deleting temp files"
 rm -r ~/.paperbuilder/temp
 
 echo "DONE!"
-echo "run `source ~/.bashrc` and then `pprb` to start"
+echo "run 'source ~/.bashrc' and then 'pprb' to start"

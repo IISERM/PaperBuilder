@@ -21,9 +21,9 @@ Remove-Item .\build\PaperBuilder.py
 Copy-Item .\windows\PaperBuilder.bat .\build
 & 'C:\Program Files (x86)\NSIS\Bin\makensis.exe' .\windows\betterPackager.nsi
 
-$linuxtemplate = Get-Content -Path '.\linux\install.sh'
+$linuxtemplate = Get-Content -Path '.\linux\install.sh' -Encoding Ascii
 $linuxinstall = $linuxtemplate -replace '{version}', $args[0]
-($linuxinstall -join "`n") | Out-File -Encoding utf8 .\release\PaperBuilder-Setup.sh
+($linuxinstall -join "`n") | Out-File -Encoding ascii .\release\PaperBuilder-Setup.sh
 
 7z.exe -tzip a .\release\source-files.zip .\src\
 7z.exe -ttar a .\release\source-files.tar .\src\
