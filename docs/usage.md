@@ -10,9 +10,9 @@ The installation adds an entry to the start menu. Simply search for `PaperBuilde
 
 ### Linux
 
-The installation adds an alias to your `~.bashrc` file. Simply running `PaperBuilder` in a bash terminal should be enough for most.
+The installation adds an alias to your `~/.bashrc` file. Simply running `pprb` in a bash terminal should be enough for most.
 
-If you are using another terminal, add an alias to `~/.PaperBuilder/PaperBuilder.py`.
+If you are using another terminal, add an alias to, or run `~/.PaperBuilder/PaperBuilder.py`.
 
 ### If you were too smart
 
