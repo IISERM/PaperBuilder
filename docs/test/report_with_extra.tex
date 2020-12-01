@@ -1,0 +1,368 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[a4paper,12pt]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Life of a Cat},
+  pdfauthor={Harry Potter},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[top=2cm,bottom=2cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage[normalem]{ulem}
+% Avoid problems with \sout in headers with hyperref
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+
+  \newlength{\cslhangindent}
+  \setlength{\cslhangindent}{1.5em}
+  \newlength{\csllabelwidth}
+  \setlength{\csllabelwidth}{3em}
+  \newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+  {% don't indent paragraphs
+    \setlength{\parindent}{0pt}
+    % turn on hanging indent if param 1 is 1
+    \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+    % set entry spacing
+    \ifnum #2 > 0
+    \setlength{\parskip}{#2\baselineskip}
+    \fi
+  }%
+  {}
+  \usepackage{calc} % for \widthof, \maxof
+  \newcommand{\CSLBlock}[1]{#1\hfill\break}
+  \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\maxof{\widthof{#1}}{\csllabelwidth}}{#1}}
+  \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth}{#1}}
+  \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\begin{document}
+
+
+% title page
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} %new command for the horizontal lines, change thickness here
+\center % Center everything on the page
+
+% header 
+
+\includegraphics[width=250pt]{C:/Users/dhruv/Programs/Python/PaperBuilder/src/default/logo.png}\\[1cm] 
+
+\textsc{\LARGE Indian Institute of Science Education and \\[5mm]Research, Mohali}\\[1.5cm]
+\textsc{\Large Seminar Report}\\[0.5cm]
+\large\textbf{Course Code -} \textsc{TRN101}\\[0.5cm]
+\HRule \\[0.6cm]
+{\Large\textbf{\textsc{Life of a Cat}}}\\[0.4cm]
+
+\begin{tabular}{c c c}
+  \large{\bfseries Speaker} & - &%DON'T CHANGE THIS LINE
+  \large{\textsc{Minerva McGonagall}}\\
+  
+  \large{\bfseries Date} & - &%DON'T CHANGE THIS LINE
+  \large{October 31, 1971}
+  \\[7mm]
+\end{tabular}
+\HRule \\[1.5cm]
+
+\begin{tabular}{|c c c|}
+    \hline
+    & &\\   
+    \large{\textbf{Name }} & - &%DON'T CHANGE THIS LINE
+    \large{Harry Potter}\\ %Author's name
+    
+    
+    \large{\textbf{Registration Number}} & - &%DON'T CHANGE THIS LINE
+    \large{\textsc{Ms18300}}\\ %Author's Registration Number
+    
+    
+        \large{\textbf{Department}} & - &%DON'T CHANGE THIS LINE
+    \large{Department of \textsc{Transfiguration}} \\ %Author's Department
+        
+    \large{\textbf{Date of Submission}} & - &%DON'T CHANGE THIS LINE
+    \large{\today}\\
+    & &\\
+    \hline
+\end{tabular}
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+      {
+          \hypersetup{linkcolor=}
+        \setcounter{tocdepth}{3}
+    \tableofcontents
+  }
+  \newpage
+Text can be \textbf{bold}, \emph{italic}, or \sout{strikethrough}.
+
+\href{https://another-page.html}{Link to another page}.
+
+There should be whitespace between paragraphs.
+
+There should be whitespace\protect\hyperlink{ref-testcite}{{[}1{]}}
+between paragraphs. Inline math \(x=3\). Display math
+
+\[y=5\]
+
+\hypertarget{header-1}{%
+\section{Header 1}\label{header-1}}
+
+This is a normal paragraph following a header. GitHub is a code hosting
+platform for version control and collaboration. It lets you and others
+work together on projects from anywhere.
+
+\hypertarget{header-2}{%
+\subsection{Header 2}\label{header-2}}
+
+\hypertarget{header-3}{%
+\subsubsection{Header 3}\label{header-3}}
+
+Table
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+head1 & head two & three\tabularnewline
+\midrule
+\endhead
+ok & good swedish fish & nice\tabularnewline
+out of stock & good and plenty & nice\tabularnewline
+ok & good \texttt{oreos} & hmm\tabularnewline
+ok & good \texttt{zoute} drop & yumm\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{theres-a-horizontal-rule-below-this}{%
+\subsubsection{There's a horizontal rule below
+this}\label{theres-a-horizontal-rule-below-this}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{here-is-an-unordered-list}{%
+\subsubsection{Here is an unordered
+list}\label{here-is-an-unordered-list}}
+
+\begin{itemize}
+\tightlist
+\item
+  Item foo
+\item
+  Item bar
+\item
+  Item baz
+\item
+  Item zip
+\end{itemize}
+
+\hypertarget{and-an-ordered-list}{%
+\subsubsection{And an ordered list}\label{and-an-ordered-list}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Item one
+\item
+  Item two
+\item
+  Item three
+\item
+  Item four
+\end{enumerate}
+
+\hypertarget{and-a-nested-list}{%
+\subsubsection{And a nested list}\label{and-a-nested-list}}
+
+\begin{itemize}
+\tightlist
+\item
+  level 1 item
+
+  \begin{itemize}
+  \tightlist
+  \item
+    level 2 item
+  \item
+    level 2 item
+
+    \begin{itemize}
+    \tightlist
+    \item
+      level 3 item
+    \item
+      level 3 item
+    \end{itemize}
+  \end{itemize}
+\item
+  level 1 item
+
+  \begin{itemize}
+  \tightlist
+  \item
+    level 2 item
+  \item
+    level 2 item
+  \item
+    level 2 item
+  \end{itemize}
+\item
+  level 1 item
+
+  \begin{itemize}
+  \tightlist
+  \item
+    level 2 item
+  \item
+    level 2 item
+  \end{itemize}
+\item
+  level 1 item
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{https://github.githubassets.com/images/icons/emoji/octocat.png}
+\caption{alt-text}
+\end{figure}
+
+\hypertarget{codeblocks}{%
+\subsubsection{Codeblocks}\label{codeblocks}}
+
+\begin{verbatim}
+Long, single-line code blocks will not wrap. IT WILL OVERFLOW. This line should be long enough to demonstrate this.
+\end{verbatim}
+
+You can also add the code language like I put python below. It adds
+syntax coloring too! But it doesn't RUN it. You can also paste ipynb
+exported as latex
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ func(x1, x2):}
+    \ControlFlowTok{return}\NormalTok{ x1}\OperatorTok{+}\NormalTok{x2}
+\NormalTok{func(}\DecValTok{3}\OperatorTok{+}\DecValTok{4}\NormalTok{) }\OperatorTok{==} \DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+Add a final empty section called \# References. Pandoc will append your
+references here.
+
+Add a pagebreak before References for best results!
+
+\(\pagebreak\)
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\hypertarget{ref-testcite}{}%
+\CSLLeftMargin{{[}1{]} }
+\CSLRightInline{T. Author, {``Test title.''} Test publisher, 2020
+{[}Online{]}. Available: \url{https://test.org/no-url}}
+
+\end{CSLReferences}
+
+
+\end{document}

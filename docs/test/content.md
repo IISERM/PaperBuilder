@@ -1,21 +1,21 @@
 ---
 # General metadata
 date-submission: \today # use \today or explicit date
-course-code: # leave blank if NA
+course-code: TRN101 # leave blank if NA
 
 # Report meta - Ignored if assignment
-title: Topic of report
-speaker:       # leave empty if not talk
-date:          # leave empty if not talk
+title: Life of a Cat
+speaker: Minerva McGonagall      # leave empty if not talk
+date: October 31, 1971         # leave empty if not talk
 report-type: Seminar Report # NOT the talk title
 
 # Assignment meta - Ignored if report
 assign-num: 1 # Set assignment number
 
 # Author meta
-reg-no:        # full roll number
-author:        # Your name
-dept:          # Dept
+reg-no: Ms18300       # full roll number
+author: Harry Potter       # Your name
+dept: Transfiguration         # Dept
 
 # TOC meta
 toc: true      # adds an index - set to false if assignment

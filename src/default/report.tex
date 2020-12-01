@@ -363,11 +363,12 @@ $endfor$
 \includegraphics[width=250pt]{$rootpath$/default/logo.png}\\[1cm] 
 
 \textsc{\LARGE Indian Institute of Science Education and \\[5mm]Research, Mohali}\\[1.5cm]
-\textsc{\Large $report-title$}\\[0.5cm]
+\textsc{\Large $report-type$}\\[0.5cm]
+$if(course-code)$
 \large\textbf{Course Code -} \textsc{$course-code$}\\[0.5cm]
-
+$endif$
 \HRule \\[0.6cm]
-{\Large\bfseries $seminar-title$}\\[0.4cm]
+{\Large\textbf{\textsc{$title$}}}\\[0.4cm]
 
 $if(speaker)$
 \begin{tabular}{c c c}
@@ -389,12 +390,13 @@ $endif$
     
     
     \large{\textbf{Registration Number}} & - &%DON'T CHANGE THIS LINE
-    \large{\textsc{MS$reg-no$}}\\ %Author's Registration Number
+    \large{\textsc{$reg-no$}}\\ %Author's Registration Number
     
     
+    $if(dept)$
     \large{\textbf{Department}} & - &%DON'T CHANGE THIS LINE
-    \large{Department of \textsc{Physics}}\\ %Author's Department
-    
+    \large{Department of \textsc{$dept$}} \\ %Author's Department
+    $endif$
     
     \large{\textbf{Date of Submission}} & - &%DON'T CHANGE THIS LINE
     \large{$date-submission$}\\

@@ -16,6 +16,9 @@ def resolve_root(filepath):
 
 
 rootpath = resolve_root(os.path.abspath(argv[0]))
+TYPE_TEMPLATE = {"pdf": "report", "ltx": "report",
+                 "report": "report", "ltxreport": "report",
+                 "assign": "assign", "ltxassign": "assign"}
 DEBUG = False
 NOOP = False
 
@@ -42,19 +45,20 @@ def new_project(path):
     """
     Create a new Project with name
     """
-    os.mkdir(path)
     if NOOP:
         return
+    os.mkdir(path)
     copyfile(rootpath + "/template.md", path + "/content.md")
     copyfile(rootpath + "/bibliography.bib", path + "/bibliography.bib")
 
 
-def build(path, build_type):
+def build(path, build_type, otherargs):
     """Build file with type
 
     Args:
         names (str): The name of the file
-        type (str): Either pdf or latex
+        type (str): One of build types
+        otherargs (str): Other Arguments passed to pandoc
     """
     if os.path.isfile(path):
         dir = os.path.dirname(path)
@@ -65,27 +69,30 @@ def build(path, build_type):
     debug("dir = " + dir)
     debug("fn = " + fn)
     debug("ext = " + ext)
-    call_template = "pandoc --variable rootpath=\"{rootpath}\" --citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/default.tex\""
-    if build_type == "pdf":
-        call_template += " -i \"{filename}{ext}\" -o \"{filename}.pdf\""
-    elif build_type == "latex":
-        call_template += " -s -i \"{filename}{ext}\" -o \"{filename}.tex\""
+    call_template = "pandoc --variable rootpath=\"{rootpath}\" --citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/{template}.tex\""
+    call_template += " "+otherargs+" "
+    if build_type in ["pdf", "report", "assign"]:
+        outext = "pdf"
+    elif build_type in ["ltx", "ltxreport", "ltxassign"]:
+        outext = "tex"
+        call_template += " -s"
     else:
         raise UnknownTypeException()
+    call_template += " -i \"{filename}{ext}\" -o \"{filename}.{outext}\""
     if NOOP:
         return
     command = call_template.format(
-        rootpath=rootpath, projectpath=dir, filename=fn, ext=ext
-    )
-    debug("Running " + call_template + " at " + dir)
+        rootpath=rootpath, projectpath=dir,
+        filename=fn, ext=ext, outext=outext,
+        template=TYPE_TEMPLATE[build_type])
+    debug("Running " + command + " at " + dir)
     run(command, cwd=dir, shell=True)
+    return os.path.join(dir, fn+"."+outext)
 
 
 def interactive():
     while True:
-        print("Example: new new/project/path")
-        print("Example: pdf path/to/project")
-        print("Example: latex path/to/project")
+        print("Enter help for info")
         print("Or exit")
         e = input("Enter command: ")
         if e == "exit":
@@ -100,31 +107,44 @@ def interactive():
 
 parser = ThrowingArgumentParser(
     description='Build IISER-M PDF Templates')
-parser.add_argument('action', nargs="?",
-                    help='Action to be taken', choices=[None, 'new', 'pdf', 'latex'])
-parser.add_argument('path', nargs="?", type=str, help="Path to create/build")
+parser.add_argument('action', nargs=1,
+                    help='Action to be taken', choices=['new', 'pdf', 'ltx', 'report', 'assign', 'ltxreport', 'ltxassign'])
+parser.add_argument('path', nargs=1, type=str, help="Path to create/build")
 parser.add_argument('--noop', action='store_true', help="No operation mode")
 parser.add_argument('--debug', action='store_true', help="Debug mode")
+parser.add_argument('--extra', nargs="?",
+                    type=str, help="Extra args to pandoc",
+                    const=["--highlight-style=breezedark --pdf-engine=xelatex -V mainfont=\"TeX Gyre Pagella\""],
+                    default=[""])
+args = None
+try:
+    args = parser.parse_args()
+    args.action = args.action[-1]
+    args.path = args.path[-1]
+except:
+    parser.parse_args(['-h'])
 
-args = parser.parse_args()
 DEBUG, NOOP = args.debug, args.noop
 
 
 def main(args):
+    debug(args.action)
     if args.action == "new":
         debug("Create a new project at "+args.path)
         new_project(args.path)
-    elif args.action in ["pdf", "latex"]:
-        debug("Build "+args.path+" as "+args.action)
-        build(args.path, args.action)
     else:
-        raise UnknownTypeException()
+        debug("Build "+args.path+" as "+args.action)
+        return build(
+            args.path, args.action,
+            " ".join(args.extra) if args.extra else ""
+        )
 
 
 if args.debug:
     print("===DEBUG MODE===")
 
 if args.action == None:
-    interactive()
+    #interactive()
+    pass
 else:
-    main(args)
+    print(main(args))

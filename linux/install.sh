@@ -15,7 +15,7 @@ echo "    Installing..."
 sudo apt install ~/.paperbuilder/temp/pandoc.deb
 
 echo "  Installing texlive"
-sudo apt install texlive-latex-extra
+sudo apt install texlive-latex-extra texlive-xetex
 
 echo "  Installing python3"
 sudo apt install python3
