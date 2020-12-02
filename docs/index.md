@@ -27,9 +27,12 @@ Don't worry, you can still use all of the latex commands where necessary. Just d
 ```
 $$your latex code here$$
 ```
+
 And everything just works :)
 
-## That's cool, I wanna try it out!
+## That's cool, I wanna see how it looks!
+
+We have a minimal example in the [Examples Page](./examples). Be sure to check it out!
 
 Look at the [Installation](./installation) and the [Usage](./usage) pages for a manual.
 
@@ -37,6 +40,6 @@ Look at the [Installation](./installation) and the [Usage](./usage) pages for a 
 
 We'd LOVE to add more templates. Make a template according to pandoc's rules, and send in a PR. Don't know what any of this is? That's ok, share an Overleaf or some such template which we'll try to add if we like it and have time!
 
-## ## WOW! SUCH A SUPERB TEMPLATE! WHO MADE IT?
+## WOW! SUCH A SUPERB TEMPLATE! WHO MADE IT?
 
 Why, thanks! Mayukh Chakrabarty of MS18 made this template, all credits to him. Tailoring it to use with pandoc was done by Dhruva Sambrani. Drop in a thanks to Dhruva @ ms18163 or Mayukh @ ms18046
