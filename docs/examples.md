@@ -11,7 +11,7 @@ This is the template Markdown file which is compiled using PaperBuilder.
 | [Report Latex](./test/report.tex)                                 | `PaperBuilder ltxreport test`  |
 | [Assignment Latex](./test/assign.tex)                             | `PaperBuilder ltxassign test`  |
 
-<embed id="pdfviewer" src="" type="application/pdf" width=500px height=500px>
+<embed id="pdfviewer" src="" type="application/pdf">
 
 <script>
     function setpdf(name) {
