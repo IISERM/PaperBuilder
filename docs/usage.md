@@ -69,6 +69,7 @@ For cases below, the default `--extra` is often enough. See [Examples](./example
 - Adding Bold SmallCaps characters (used in the title of `report`)
 
 To use this, the following setup needs to be done
+
 | OS      | Change                                                                         |
 | ------- | ------------------------------------------------------------------------------ |
 | Windows | In MikTex Console, go to Packages, search for `gyre` and install both results. |
