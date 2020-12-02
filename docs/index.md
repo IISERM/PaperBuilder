@@ -20,16 +20,6 @@ Why not Latex directly? Because it is 202x! No one should be writing stuff direc
 
 Also, Markdown is a great way to take quick notes during lectures and talks. Now you don't have rewrite it in Latex and worry about Latex syntax anymore
 
-## BUT BUT BUT, What About MATH?
-
-Don't worry, you can still use all of the latex commands where necessary. Just do -
-
-```
-$$your latex code here$$
-```
-
-And everything just works :)
-
 ## That's cool, show me how it looks!
 
 We have a minimal example in the [Examples Page](./examples). Be sure to check it out!
