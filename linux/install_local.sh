@@ -20,12 +20,8 @@ sudo apt install texlive-latex-extra
 echo "  Installing python3"
 sudo apt install python3
 
-echo "Installing PaperBuilder"
-echo "  Downloading files..."
-curl -#L https://github.com/IISERM/PaperBuilder/releases/download/{version}/source-files.tar.gz -o ~/.paperbuilder/temp/source-files.tar.gz
-
-echo "  Extracting files..."
-tar -xzf ~/.paperbuilder/temp/source-files.tar.gz -C ~/.paperbuilder
+echo "Installing PaperBuilder from repo"
+cp ./src/* ~/.paperbuilder
 
 echo "  Adding pprb alias to ~/.bashrc"
 echo "alias pprb=~/.paperbuilder/src/PaperBuilder.py" >> ~/.bashrc

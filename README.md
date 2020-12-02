@@ -4,6 +4,10 @@ Build a latex paper with IISER Mohali logo and superb formatting with just Markd
 
 Visit website [https://iiserm.github.io/PaperBuilder](https://iiserm.github.io/PaperBuilder)
 
+# Contributing
+
+See [devdocs](https://iiserm.github.io/PaperBuilder/devdocs)
+
 ## Credits
 
 - Mayukh Chakrabarty of MS18 made this template, all credits to him.
