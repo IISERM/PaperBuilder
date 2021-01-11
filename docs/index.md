@@ -37,3 +37,15 @@ See the [devdocs](./devdocs)
 ## WOW! SUCH A SUPERB TEMPLATE! WHO MADE IT?
 
 Why, thanks! Mayukh Chakrabarty of MS18 made this template, all credits to him. Tailoring it to use with pandoc was done by Dhruva Sambrani. Drop in a thanks to Dhruva @ ms18163 or Mayukh @ ms18046
+
+## Be Sure To Cite the Project if you use it in your research!
+```bibtex
+@misc{pprb,
+  author = {Students, IISER Mohali},
+  title = {PaperBuilder},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/IISERM/PaperBuilder}}
+}
+```
