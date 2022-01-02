@@ -16,9 +16,10 @@ def resolve_root(filepath):
 
 
 rootpath = resolve_root(os.path.abspath(argv[0]))
-TYPE_TEMPLATE = {"pdf": "report", "ltx": "report",
-                 "report": "report", "ltxreport": "report",
-                 "assign": "assign", "ltxassign": "assign"}
+TYPE_TEMPLATE = {"pdf": "report.tex", "ltx": "report.tex",
+                 "report": "report.tex", "ltxreport": "report.tex",
+                 "assign": "assign.tex", "ltxassign": "assign.tex",
+                 "slides": "slides.html"}
 DEBUG = False
 NOOP = False
 
@@ -50,6 +51,7 @@ def new_project(path):
     os.mkdir(path)
     copyfile(rootpath + "/template.md", path + "/content.md")
     copyfile(rootpath + "/bibliography.bib", path + "/bibliography.bib")
+    return path
 
 
 def build(path, build_type, otherargs):
@@ -69,22 +71,32 @@ def build(path, build_type, otherargs):
     debug("dir = " + dir)
     debug("fn = " + fn)
     debug("ext = " + ext)
-    call_template = "pandoc --variable rootpath=\"{rootpath}\" --citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/{template}.tex\""
+    call_template = "pandoc --variable rootpath=\"{rootpath}\" --citeproc --csl \"{rootpath}/default/ieee.csl\" --template \"{rootpath}/default/{template}\""
     call_template += " "+otherargs+" "
+    
     if build_type in ["pdf", "report", "assign"]:
         outext = "pdf"
+        call_template += "-H \"{rootpath}/default/remove_float.tex\""
     elif build_type in ["ltx", "ltxreport", "ltxassign"]:
         outext = "tex"
         call_template += " -s"
+    elif build_type in ["slides"]:
+        outext = "html"
+        call_template += "--mathjax --slide-level 2 -s -t revealjs"
     else:
         raise UnknownTypeException()
+    
     call_template += " -i \"{filename}{ext}\" -o \"{filename}.{outext}\""
+    
     if NOOP:
         return
+
     command = call_template.format(
         rootpath=rootpath, projectpath=dir,
         filename=fn, ext=ext, outext=outext,
-        template=TYPE_TEMPLATE[build_type])
+        template=TYPE_TEMPLATE[build_type]
+    )
+
     debug("Running " + command + " at " + dir)
     run(command, cwd=dir, shell=True)
     return os.path.join(dir, fn+"."+outext)
@@ -108,13 +120,13 @@ def interactive():
 parser = ThrowingArgumentParser(
     description='Build IISER-M PDF Templates')
 parser.add_argument('action', nargs=1,
-                    help='Action to be taken', choices=['new', 'pdf', 'ltx', 'report', 'assign', 'ltxreport', 'ltxassign'])
+                    help='Action to be taken', choices=['new', 'pdf', 'ltx', 'report', 'assign', 'ltxreport', 'ltxassign', 'slides'])
 parser.add_argument('path', nargs=1, type=str, help="Path to create/build")
 parser.add_argument('--noop', action='store_true', help="No operation mode")
 parser.add_argument('--debug', action='store_true', help="Debug mode")
 parser.add_argument('--extra', nargs="?",
                     type=str, help="Extra args to pandoc",
-                    const=["--highlight-style=breezedark --pdf-engine=xelatex -V mainfont=\"TeX Gyre Pagella\""],
+                    const=["--highlight-style=breezedark --pdf-engine=xelatex -V mainfont=\"TeX Gyre Pagella\" -V monofont=JuliaMono"],
                     default=[""])
 args = None
 try:
@@ -131,7 +143,7 @@ def main(args):
     debug(args.action)
     if args.action == "new":
         debug("Create a new project at "+args.path)
-        new_project(args.path)
+        return new_project(args.path)
     else:
         debug("Build "+args.path+" as "+args.action)
         return build(
